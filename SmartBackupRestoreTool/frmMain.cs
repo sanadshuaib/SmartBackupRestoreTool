@@ -92,9 +92,13 @@ namespace SmartBackupRestoreTool
                 !string.IsNullOrEmpty(cboDatabase.Text))
             {
                 grpBackup.Enabled = true;
+                grpRestore.Enabled = true;
             }
             else
+            {
                 grpBackup.Enabled = false;
+                grpRestore.Enabled = false;
+            }
         }
 
         private void BtnBrowse_Click(object sender, EventArgs e)
@@ -129,9 +133,92 @@ namespace SmartBackupRestoreTool
             };
 
             backup.Devices.AddDevice(txtLocation.Text + "\\" + txtName.Text + ".bak", DeviceType.File);
-            backup.SqlBackup(server);
-            MessageBox.Show("تمت عملية النسخ");
-            this.Cursor = Cursors.Default;
+            backup.PercentComplete += Backup_PercentComplete;
+
+            try
+            {
+                backup.SqlBackup(server);
+                MessageBox.Show("تمت عملية النسخ");
+                txtLocation.Text = "";
+                txtName.Text = "";
+                chkDate.Checked = false;
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("لم تتم عملية النسخ : "+ee.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+                progressBar.Value1 = 0;
+                progressBar.Text = "0 %";
+            }
+        }
+
+
+        private void Backup_PercentComplete(object sender, PercentCompleteEventArgs e)
+        {
+            progressBar.Invoke((MethodInvoker)delegate
+            {
+                progressBar.Value1 = e.Percent;
+                progressBar.Text = $"{e.Percent} %";
+                progressBar.Update();
+            });
+        }
+
+        private void BtnBrowseRestore_Click(object sender, EventArgs e)
+        {
+            openFileDialog.ShowDialog();
+            txtRestoreLocation.Text = openFileDialog.FileName;
+        }
+
+        private void BtnRestore_Click(object sender, EventArgs e)
+        {
+            DialogResult dg = MessageBox.Show("سيتم الغاء كافة التعديلات المضافة بعد هذه النسخة من قاعدة البيانات. هل تريد الاستمرار؟","", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign|MessageBoxOptions.RtlReading);
+
+            if (dg == DialogResult.Yes)
+            {
+
+                this.Cursor = Cursors.WaitCursor;
+                Restore restore = new Restore
+                {
+                    Action = RestoreActionType.Database,
+                    Database = cboDatabase.Text,
+                    ReplaceDatabase = true,
+                    NoRecovery = false
+                };
+
+                restore.Devices.AddDevice(txtRestoreLocation.Text, DeviceType.File);
+                restore.PercentComplete += Restore_PercentComplete;
+                try
+                {
+                    server.Databases[cboDatabase.Text].SetOffline();
+                    restore.SqlRestore(server);
+                    MessageBox.Show("تمت عملية الاستعادة");
+                    txtRestoreLocation.Text = "";
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show("لم تتم عملية الاستعادة : " + ee.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    this.Cursor = Cursors.Default;
+                    server.Databases[cboDatabase.Text].SetOnline();
+                    progressBar.Value1 = 0;
+                    progressBar.Text = "0 %";
+                }
+            }
+        }
+
+        private void Restore_PercentComplete(object sender, PercentCompleteEventArgs e)
+        {
+            progressBar.Invoke((MethodInvoker)delegate
+            {
+                progressBar.Value1 = e.Percent;
+                progressBar.Text = $"{e.Percent} %";
+                progressBar.Update();
+            });
         }
     }
 }

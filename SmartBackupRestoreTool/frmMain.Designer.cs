@@ -54,6 +54,17 @@
             this.lblHeader2 = new Telerik.WinControls.UI.RadLabel();
             this.btnCancel = new Telerik.WinControls.UI.RadButton();
             this.openFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.PageView = new Telerik.WinControls.UI.RadPageView();
+            this.BackupPage = new Telerik.WinControls.UI.RadPageViewPage();
+            this.RestorePage = new Telerik.WinControls.UI.RadPageViewPage();
+            this.grpRestore = new Telerik.WinControls.UI.RadGroupBox();
+            this.btnRestore = new Telerik.WinControls.UI.RadButton();
+            this.btnBrowseRestore = new Telerik.WinControls.UI.RadButton();
+            this.txtRestoreLocation = new Telerik.WinControls.UI.RadTextBox();
+            this.lblRestoreLocation = new Telerik.WinControls.UI.RadLabel();
+            this.lblRestoreHeader = new Telerik.WinControls.UI.RadLabel();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.progressBar = new Telerik.WinControls.UI.RadProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.grpConnectionData)).BeginInit();
             this.grpConnectionData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboDatabase)).BeginInit();
@@ -78,6 +89,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblLocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblHeader2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PageView)).BeginInit();
+            this.PageView.SuspendLayout();
+            this.BackupPage.SuspendLayout();
+            this.RestorePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grpRestore)).BeginInit();
+            this.grpRestore.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBrowseRestore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRestoreLocation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblRestoreLocation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblRestoreHeader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar)).BeginInit();
             this.SuspendLayout();
             // 
             // grpConnectionData
@@ -95,26 +118,26 @@
             this.grpConnectionData.Controls.Add(this.lblServer);
             this.grpConnectionData.Controls.Add(this.lblHeader);
             this.grpConnectionData.HeaderText = "بيانات الاتصال";
-            this.grpConnectionData.Location = new System.Drawing.Point(346, 12);
+            this.grpConnectionData.Location = new System.Drawing.Point(12, 12);
             this.grpConnectionData.Name = "grpConnectionData";
-            this.grpConnectionData.Size = new System.Drawing.Size(297, 198);
+            this.grpConnectionData.Size = new System.Drawing.Size(359, 198);
             this.grpConnectionData.TabIndex = 0;
             this.grpConnectionData.Text = "بيانات الاتصال";
             // 
             // cboDatabase
             // 
-            this.cboDatabase.Location = new System.Drawing.Point(18, 165);
+            this.cboDatabase.Location = new System.Drawing.Point(36, 152);
             this.cboDatabase.Name = "cboDatabase";
-            this.cboDatabase.Size = new System.Drawing.Size(139, 20);
+            this.cboDatabase.Size = new System.Drawing.Size(173, 20);
             this.cboDatabase.TabIndex = 16;
             this.cboDatabase.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.CboDatabase_SelectedIndexChanged);
             this.cboDatabase.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CboDatabase_MouseClick);
             // 
             // cboServer
             // 
-            this.cboServer.Location = new System.Drawing.Point(47, 65);
+            this.cboServer.Location = new System.Drawing.Point(65, 52);
             this.cboServer.Name = "cboServer";
-            this.cboServer.Size = new System.Drawing.Size(110, 20);
+            this.cboServer.Size = new System.Drawing.Size(144, 20);
             this.cboServer.TabIndex = 15;
             // 
             // btnGetServers
@@ -122,7 +145,7 @@
             this.btnGetServers.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnGetServers.ImageIndex = 0;
             this.btnGetServers.ImageList = this.img;
-            this.btnGetServers.Location = new System.Drawing.Point(18, 64);
+            this.btnGetServers.Location = new System.Drawing.Point(36, 51);
             this.btnGetServers.Name = "btnGetServers";
             this.btnGetServers.Size = new System.Drawing.Size(23, 24);
             this.btnGetServers.TabIndex = 11;
@@ -136,22 +159,22 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(18, 118);
+            this.txtPassword.Location = new System.Drawing.Point(36, 105);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(139, 20);
+            this.txtPassword.Size = new System.Drawing.Size(173, 20);
             this.txtPassword.TabIndex = 7;
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(18, 94);
+            this.txtUserName.Location = new System.Drawing.Point(36, 81);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(139, 20);
+            this.txtUserName.Size = new System.Drawing.Size(173, 20);
             this.txtUserName.TabIndex = 6;
             // 
             // chkIntegratedSecurity
             // 
-            this.chkIntegratedSecurity.Location = new System.Drawing.Point(88, 142);
+            this.chkIntegratedSecurity.Location = new System.Drawing.Point(140, 129);
             this.chkIntegratedSecurity.Name = "chkIntegratedSecurity";
             this.chkIntegratedSecurity.Size = new System.Drawing.Size(69, 18);
             this.chkIntegratedSecurity.TabIndex = 5;
@@ -160,7 +183,7 @@
             // 
             // lblDatabase
             // 
-            this.lblDatabase.Location = new System.Drawing.Point(203, 165);
+            this.lblDatabase.Location = new System.Drawing.Point(252, 152);
             this.lblDatabase.Name = "lblDatabase";
             this.lblDatabase.Size = new System.Drawing.Size(70, 18);
             this.lblDatabase.TabIndex = 4;
@@ -169,7 +192,7 @@
             // 
             // lblPassword
             // 
-            this.lblPassword.Location = new System.Drawing.Point(215, 119);
+            this.lblPassword.Location = new System.Drawing.Point(264, 106);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(58, 18);
             this.lblPassword.TabIndex = 3;
@@ -178,7 +201,7 @@
             // 
             // lblUserName
             // 
-            this.lblUserName.Location = new System.Drawing.Point(199, 95);
+            this.lblUserName.Location = new System.Drawing.Point(248, 82);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(74, 18);
             this.lblUserName.TabIndex = 2;
@@ -187,7 +210,7 @@
             // 
             // lblServer
             // 
-            this.lblServer.Location = new System.Drawing.Point(161, 65);
+            this.lblServer.Location = new System.Drawing.Point(210, 52);
             this.lblServer.Name = "lblServer";
             this.lblServer.Size = new System.Drawing.Size(112, 18);
             this.lblServer.TabIndex = 1;
@@ -196,7 +219,7 @@
             // 
             // lblHeader
             // 
-            this.lblHeader.Location = new System.Drawing.Point(18, 36);
+            this.lblHeader.Location = new System.Drawing.Point(52, 27);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(255, 18);
             this.lblHeader.TabIndex = 0;
@@ -216,7 +239,7 @@
             this.grpBackup.Controls.Add(this.lblHeader2);
             this.grpBackup.Enabled = false;
             this.grpBackup.HeaderText = "بيانات النسخ الاحتياطي";
-            this.grpBackup.Location = new System.Drawing.Point(12, 12);
+            this.grpBackup.Location = new System.Drawing.Point(10, 13);
             this.grpBackup.Name = "grpBackup";
             this.grpBackup.Size = new System.Drawing.Size(318, 198);
             this.grpBackup.TabIndex = 1;
@@ -284,7 +307,7 @@
             // 
             // lblHeader2
             // 
-            this.lblHeader2.Location = new System.Drawing.Point(137, 36);
+            this.lblHeader2.Location = new System.Drawing.Point(78, 36);
             this.lblHeader2.Name = "lblHeader2";
             this.lblHeader2.Size = new System.Drawing.Size(163, 18);
             this.lblHeader2.TabIndex = 1;
@@ -294,12 +317,118 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(12, 259);
+            this.btnCancel.Location = new System.Drawing.Point(12, 507);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 24);
             this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "خروج";
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
+            // PageView
+            // 
+            this.PageView.Controls.Add(this.BackupPage);
+            this.PageView.Controls.Add(this.RestorePage);
+            this.PageView.DefaultPage = this.BackupPage;
+            this.PageView.Location = new System.Drawing.Point(12, 223);
+            this.PageView.Name = "PageView";
+            this.PageView.SelectedPage = this.RestorePage;
+            this.PageView.Size = new System.Drawing.Size(359, 273);
+            this.PageView.TabIndex = 15;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageView.GetChildAt(0))).ShowItemPinButton = false;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageView.GetChildAt(0))).StripAlignment = Telerik.WinControls.UI.StripViewAlignment.Top;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageView.GetChildAt(0))).ShowItemCloseButton = false;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageView.GetChildAt(0))).ItemSizeMode = Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight;
+            ((Telerik.WinControls.UI.RadPageViewStripElement)(this.PageView.GetChildAt(0))).ItemContentOrientation = Telerik.WinControls.UI.PageViewContentOrientation.Auto;
+            // 
+            // BackupPage
+            // 
+            this.BackupPage.Controls.Add(this.grpBackup);
+            this.BackupPage.ItemSize = new System.Drawing.SizeF(91F, 28F);
+            this.BackupPage.Location = new System.Drawing.Point(10, 37);
+            this.BackupPage.Name = "BackupPage";
+            this.BackupPage.Size = new System.Drawing.Size(338, 225);
+            this.BackupPage.Text = "النسخ الاحتياطي";
+            // 
+            // RestorePage
+            // 
+            this.RestorePage.Controls.Add(this.grpRestore);
+            this.RestorePage.ItemSize = new System.Drawing.SizeF(137F, 28F);
+            this.RestorePage.Location = new System.Drawing.Point(10, 37);
+            this.RestorePage.Name = "RestorePage";
+            this.RestorePage.Size = new System.Drawing.Size(338, 225);
+            this.RestorePage.Text = "استعادة النسخة الاحتياطية";
+            // 
+            // grpRestore
+            // 
+            this.grpRestore.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.grpRestore.Controls.Add(this.btnRestore);
+            this.grpRestore.Controls.Add(this.btnBrowseRestore);
+            this.grpRestore.Controls.Add(this.txtRestoreLocation);
+            this.grpRestore.Controls.Add(this.lblRestoreLocation);
+            this.grpRestore.Controls.Add(this.lblRestoreHeader);
+            this.grpRestore.Enabled = false;
+            this.grpRestore.HeaderText = "بيانات الاستعادة";
+            this.grpRestore.Location = new System.Drawing.Point(10, 13);
+            this.grpRestore.Name = "grpRestore";
+            this.grpRestore.Size = new System.Drawing.Size(318, 198);
+            this.grpRestore.TabIndex = 2;
+            this.grpRestore.Text = "بيانات الاستعادة";
+            // 
+            // btnRestore
+            // 
+            this.btnRestore.Location = new System.Drawing.Point(110, 162);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(110, 24);
+            this.btnRestore.TabIndex = 13;
+            this.btnRestore.Text = "استعادة";
+            this.btnRestore.Click += new System.EventHandler(this.BtnRestore_Click);
+            // 
+            // btnBrowseRestore
+            // 
+            this.btnBrowseRestore.Location = new System.Drawing.Point(21, 62);
+            this.btnBrowseRestore.Name = "btnBrowseRestore";
+            this.btnBrowseRestore.Size = new System.Drawing.Size(54, 24);
+            this.btnBrowseRestore.TabIndex = 11;
+            this.btnBrowseRestore.Text = "...";
+            this.btnBrowseRestore.Click += new System.EventHandler(this.BtnBrowseRestore_Click);
+            // 
+            // txtRestoreLocation
+            // 
+            this.txtRestoreLocation.Location = new System.Drawing.Point(81, 64);
+            this.txtRestoreLocation.Name = "txtRestoreLocation";
+            this.txtRestoreLocation.ReadOnly = true;
+            this.txtRestoreLocation.Size = new System.Drawing.Size(139, 20);
+            this.txtRestoreLocation.TabIndex = 7;
+            // 
+            // lblRestoreLocation
+            // 
+            this.lblRestoreLocation.Location = new System.Drawing.Point(226, 65);
+            this.lblRestoreLocation.Name = "lblRestoreLocation";
+            this.lblRestoreLocation.Size = new System.Drawing.Size(66, 18);
+            this.lblRestoreLocation.TabIndex = 3;
+            this.lblRestoreLocation.Text = "موقع النسخة";
+            this.lblRestoreLocation.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblRestoreHeader
+            // 
+            this.lblRestoreHeader.Location = new System.Drawing.Point(40, 37);
+            this.lblRestoreHeader.Name = "lblRestoreHeader";
+            this.lblRestoreHeader.Size = new System.Drawing.Size(239, 18);
+            this.lblRestoreHeader.TabIndex = 1;
+            this.lblRestoreHeader.Text = "حدد موقع واسم النسخة الاحتياطية المراد استعادتها";
+            this.lblRestoreHeader.TextAlignment = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "All Files|*.*";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(152, 507);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(219, 24);
+            this.progressBar.TabIndex = 16;
+            this.progressBar.Text = "0 %";
             // 
             // frmMain
             // 
@@ -307,10 +436,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(655, 295);
+            this.ClientSize = new System.Drawing.Size(385, 543);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.PageView);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.grpBackup);
             this.Controls.Add(this.grpConnectionData);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -342,6 +473,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblLocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblHeader2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PageView)).EndInit();
+            this.PageView.ResumeLayout(false);
+            this.BackupPage.ResumeLayout(false);
+            this.RestorePage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grpRestore)).EndInit();
+            this.grpRestore.ResumeLayout(false);
+            this.grpRestore.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBrowseRestore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRestoreLocation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblRestoreLocation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lblRestoreHeader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.progressBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -372,6 +516,17 @@
         private Telerik.WinControls.UI.RadDropDownList cboServer;
         private Telerik.WinControls.UI.RadDropDownList cboDatabase;
         private System.Windows.Forms.FolderBrowserDialog openFolderDialog;
+        private Telerik.WinControls.UI.RadPageView PageView;
+        private Telerik.WinControls.UI.RadPageViewPage BackupPage;
+        private Telerik.WinControls.UI.RadPageViewPage RestorePage;
+        private Telerik.WinControls.UI.RadGroupBox grpRestore;
+        private Telerik.WinControls.UI.RadButton btnRestore;
+        private Telerik.WinControls.UI.RadButton btnBrowseRestore;
+        private Telerik.WinControls.UI.RadTextBox txtRestoreLocation;
+        private Telerik.WinControls.UI.RadLabel lblRestoreLocation;
+        private Telerik.WinControls.UI.RadLabel lblRestoreHeader;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private Telerik.WinControls.UI.RadProgressBar progressBar;
     }
 }
 
